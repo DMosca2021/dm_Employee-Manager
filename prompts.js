@@ -7,7 +7,7 @@ const util = require('util');
 
 const writeFileAsync = util.promisify(fs.writeFile);
 
-// Create an array of questions for user input
+// Create an array of questions for user INPUT
 // const questions = [
 //     "Project Title:",
 //     "Description:",
@@ -20,64 +20,64 @@ const writeFileAsync = util.promisify(fs.writeFile);
 // ]
     // Questions from video demo:
 
-        // What would you like to do? <-- List menu (noted below)
+        // What would you like to do? <-- LIST menu (noted below)
             // View all Employees, roles, dept => Shows contents of each table in the db
 
-            // Add dept => What is the name of the department? <-- Input name, notify name added, return to menu.
+            // Add dept => What is the name of the department? <-- INPUT name, notify name added, return to menu.
 
-            // Add role => What is the name of the role? <-- Input name, then...
-                // Add salary => What is the salary of the role? <-- Input number then...
-                    // Add role to department => Which dept does the role belong to? <--choose from list of dept in db, notify that role was added to the db, return to menu
+            // Add role => What is the name of the role? <-- INPUT name, then...
+                // Add salary => What is the salary of the role? <-- INPUT number then...
+                    // Add role to department => Which dept does the role belong to? <--choose from LIST of dept in db, notify that role was added to the db, return to menu
 
-            // Add employee => What is the employee's first/last name? Enter first name, then last name, then...
-                // What is the employee's role? <--choose from list, then...
-                    // Who is the employee's manager? <--choose from list, notify employee was added to db, return to menu
+            // Add employee => What is the employee's first/last name? INPUT first name, then last name, then...
+                // What is the employee's role? <--choose from LIST, then...
+                    // Who is the employee's manager? <--choose from LIST, notify employee was added to db, return to menu
 
-            // Update employee role => Which employee's role do you want to update? <-- choose from list of employees in db, then...
-                // Which role do you want to assign to the selected employee? <--choose from list of roles in the db, return to menu
+            // Update employee role => Which employee's role do you want to update? <-- choose from LIST of employees in db, then...
+                // Which role do you want to assign to the selected employee? <--choose from LIST of roles in the db, return to menu
 
             // Quit => then the application
-            
+
 // const promptUser = () => {
 //   return inquirer.prompt([
 //     {
-//       type: 'input',
+//       type: 'INPUT',
 //       name: 'title',
 //       message: questions[0],
 //     },
 //     {
-//       type: 'input',
+//       type: 'INPUT',
 //       name: 'description',
 //       message: questions[1],
 //     },
 //     {
-//       type: 'input',
+//       type: 'INPUT',
 //       name: 'install',
 //       message: questions[2],
 //     },
 //     {
-//       type: 'input',
+//       type: 'INPUT',
 //       name: 'usage',
 //       message: questions[3],
 //     },
 //     {
-//       type: 'input',
+//       type: 'INPUT',
 //       name: 'credits',
 //       message: questions[4],
 //     },
 //     {
-//       type: 'list',
+//       type: 'LIST',
 //       name: 'license',
 //       message: questions[5],
 //       choices: ["Apache license 2.0", "Artistic license 2.0", "Boost Software License 1.0", "BSD 2-clause Simplified license", "BSD 3-clause New or Revised license", "Creative Commons Zero v1.0 Universal", "Creative Commons Attribution 4.0", "Creative Commons Attribution Share Alike 4.0", "Do What The F*ck You Want To Public License", "Eclipse Public License 1.0", "GNU Affero General Public License v3.0", "GNU General Public License v2.0", "GNU General Public License v3.0", "GNU Lesser General Public License v3.0", "ISC", "MIT", "Mozilla Public License 2.0", "SIL Open Font License 1.1", "The Unlicense", "zLib License"]
 //     },
 //     {
-//       type: 'input',
+//       type: 'INPUT',
 //       name: 'contribute',
 //       message: questions[6],
 //     },
 //     {
-//       type: 'input',
+//       type: 'INPUT',
 //       name: 'tests',
 //       message: questions[7],
 //     },
