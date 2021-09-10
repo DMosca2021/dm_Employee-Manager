@@ -1,0 +1,23 @@
+{
+  "name": "dm_Employee-Manager",
+  "version": "1.0.0",
+  "description": "Week 12 homework",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DMosca2021/dm_Employee-Manager.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DMosca2021/dm_Employee-Manager/issues"
+  },
+  "homepage": "https://github.com/DMosca2021/dm_Employee-Manager#readme",
+  "dependencies": {
+    "inquirer": "^8.1.2"
+  }
+}
