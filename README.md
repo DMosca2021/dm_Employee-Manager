@@ -35,7 +35,7 @@ WHEN I choose to update an employee role
 THEN I am prompted to select an employee to update and their new role and this information is updated in the database 
 ```
 
-## Access to repo 
+## Access to REPO and DEMO video
 
 [Repo Link](https://github.com/DMosca2021/dm_Employee-Manager)
 
@@ -44,3 +44,14 @@ THEN I am prompted to select an employee to update and their new role and this i
 ## Screenshots
 
 ## Credits
+
+[Docs on console.table](https://www.npmjs.com/package/console.table)
+
+## Notes
+BONUS:
+Try to add some additional functionality to your application, such as the ability to do the following:
+- Update employee managers.
+- View employees by manager.
+- View employees by department.
+- Delete departments, roles, and employees.
+- View the total utilized budget of a department—in other words, the combined salaries of all employees in that department.
