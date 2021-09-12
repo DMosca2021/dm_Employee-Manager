@@ -1,8 +1,6 @@
 const express = require("express");
-const inquirer = require('inquirer');
-const path = require("path");
+// const inquirer = require('inquirer');
 const mysql = require("mysql2");
-const api = require('./routes/index.js');
 
 const PORT = process.env.PORT || 3001;
 
@@ -11,9 +9,18 @@ const app = express();
 // Middleware for parsing JSON and urlencoded form data
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static('public'));
-app.use('/api', api);
-// /api/notes/
+
+const db = mysql.createConnection(
+  {
+    host: 'localhost',
+    // MySQL username,
+    user: 'root',
+    // TODO: Add MySQL password here
+    password: '',
+    database: 'workforce_db'
+  },
+  console.log(`Connected to the workforce_db database.`)
+);
 
 // // GET Route for homepage
 // app.get('/', (req, res) =>
