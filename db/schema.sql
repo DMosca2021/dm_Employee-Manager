@@ -4,31 +4,22 @@ CREATE DATABASE workforce_db;
 USE workforce_db;
 
 CREATE TABLE employee (
-  id INT NOT NULL  -- AUTO_INCREMENT PRIMARY KEY,
-  first_name VARCHAR(40) NOT NULL,
-  last_name VARCHAR(40) NOT NULL,
-  title_name VARCHAR(100) NOT NULL,
-  department_name VARCHAR(100) NOT NULL,
-  salary INT NOT NULL,
-  employment_status BOOLEAN NOT NULL
+  id INT NOT NULL PRIMARY KEY,
+  first_name VARCHAR(30) NOT NULL,
+  last_name VARCHAR(50) NOT NULL,
+  title_id INT
+  manager_id INT
+  -- employment_status BOOLEAN NOT NULL
 );
 
 CREATE TABLE employee_title (
-  -- id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  -- first_name VARCHAR(40) NOT NULL,
-  -- last_name VARCHAR(40) NOT NULL,
-  -- title_name VARCHAR(100) NOT NULL,
-  -- department_name VARCHAR(100) NOT NULL,
-  -- salary INT NOT NULL,
-  -- employment_status BOOLEAN NOT NULL
+  id INT NOT NULL PRIMARY KEY,
+  title_name VARCHAR(30) NOT NULL,
+  salary DECIMAL NOT NULL,
+  department_id INT NOT NULL,
 );
 
 CREATE TABLE department (
-  -- id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  -- first_name VARCHAR(40) NOT NULL,
-  -- last_name VARCHAR(40) NOT NULL,
-  -- title_name VARCHAR(100) NOT NULL,
-  -- department_name VARCHAR(100) NOT NULL,
-  -- salary INT NOT NULL,
-  -- employment_status BOOLEAN NOT NULL
+  id INT NOT NULL PRIMARY KEY,
+  department_name VARCHAR(100) NOT NULL,
 );
