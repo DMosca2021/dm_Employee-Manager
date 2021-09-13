@@ -1,20 +1,16 @@
--- Add employee 
--- Add role 
--- Add department
-
 INSERT INTO employee (id, first_name, last_name, title_id, manager_id)
 VALUES (001, "Devin", "Mosca"),
-    --    (002, "peanut butter", "staples"),
-    --    (003, "peas-canned", "canned goods"),
-    --    (004, "ice cream", "frozen"),
-    --    (005, "potato chips", "snacks");
+       (002, "Lincoln", "Spaeth"),
+       (003, "Adeline", "Lister"),
+       (004, "Clarence", "Mondragon"),
+       (005, "Dean", "Reams");
        
 INSERT INTO employee_title (id, title_name, salary)
 VALUES (001, "Manager", "200000"),
-    --    (002, "peanut butter", "staples"),
-    --    (003, "peas-canned", "canned goods"),
-    --    (004, "ice cream", "frozen"),
-    --    (005, "potato chips", "snacks");
+       (002, "Team Leader", "120000"),
+       (003, "Engineer", "095000"),
+       (004, "Sales Associate", "055000"),
+       (005, "Tester", "045000");
        
 INSERT INTO department (id, department_name)
 VALUES (001, "Research & developement"),
@@ -26,14 +22,14 @@ VALUES (001, "Research & developement"),
        (007, "Security"),
        (008, "Product Testing"),
        (009, "Marketing"),
-       (010, "Customer Service"),
+       (010, "Customer Service");
        
 
 -- Random list of names for employees
-    -- Lincoln Spaeth  
-    -- Adeline Lister  
-    -- Clarence Mondragon  
-    -- Dean Reams  
+    --    
+    --    
+    --    
+    --    
     -- Raleigh Figueredo  
     -- Shin Fortson  
     -- Ryan Smalls  

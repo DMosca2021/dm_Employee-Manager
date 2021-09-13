@@ -1,3 +1,4 @@
+require("dotenv").config()
 const express = require("express");
 // const inquirer = require('inquirer');
 const mysql = require("mysql2");
@@ -10,13 +11,17 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.listen(PORT, () =>
+  console.log(`App listening at http://localhost:${PORT} 🚀`)
+);
+
 const db = mysql.createConnection(
   {
     host: 'localhost',
     // MySQL username,
     user: 'root',
     // TODO: Add MySQL password here
-    password: '',
+    password: process.env.sql_pw,
     database: 'workforce_db'
   },
   console.log(`Connected to the workforce_db database.`)
@@ -37,8 +42,6 @@ const db = mysql.createConnection(
 //   res.sendFile(path.join(__dirname, './public/index.html'))
 // );
 
-app.listen(PORT, () =>
-  console.log(`App listening at http://localhost:${PORT} 🚀`)
-);
+
 
 // Borrowed server format from last homework
