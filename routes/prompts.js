@@ -74,6 +74,8 @@ const welcomeMenu = () => {
         }
     ])
 }
+// use switch case to go through the menu items and run associated functions. Ex: View all employees --> Chosen --> runs viewEmployees function.
+
 
 // const promptUser = () => {
 //   return inquirer.prompt([
