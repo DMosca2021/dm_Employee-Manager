@@ -1,10 +1,10 @@
 INSERT INTO employee (id, first_name, last_name, title_id, manager_id)
-VALUES (001, "Devin", "Mosca"),
-       (002, "Lincoln", "Spaeth"),
-       (003, "Adeline", "Lister"),
-       (004, "Clarence", "Mondragon"),
-       (005, "Dean", "Reams");
-       
+VALUES (001, "Devin", "Mosca", 001, 000),
+       (002, "Lincoln", "Spaeth", 002, 001),
+       (003, "Adeline", "Lister", 003, 002),
+       (004, "Clarence", "Mondragon", 001, 000),
+       (005, "Dean", "Reams", 004, 001);
+
 INSERT INTO employee_title (id, title_name, salary)
 VALUES (001, "Manager", "200000"),
        (002, "Team Leader", "120000"),
@@ -26,10 +26,6 @@ VALUES (001, "Research & developement"),
        
 
 -- Random list of names for employees
-    --    
-    --    
-    --    
-    --    
     -- Raleigh Figueredo  
     -- Shin Fortson  
     -- Ryan Smalls  

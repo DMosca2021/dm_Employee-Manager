@@ -55,3 +55,8 @@ Try to add some additional functionality to your application, such as the abilit
 - View employees by department.
 - Delete departments, roles, and employees.
 - View the total utilized budget of a department—in other words, the combined salaries of all employees in that department.
+
+
+-------------------
+
+Left off fixing the employee seeds.sql, currently throws an error when inserting into table. App is connected, dotenv is working. After seeds and tables work correctly, work on creating prompts and functions for creating/displaying employee info. 
