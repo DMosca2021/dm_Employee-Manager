@@ -35,21 +35,45 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 const util = require('util');
-// const generateMarkdown = require("./assets/generateMarkdown.js")
 
-const writeFileAsync = util.promisify(fs.writeFile);
+// const writeFileAsync = util.promisify(fs.writeFile);
 
 // Create an array of questions for user INPUT
-// const questions = [
-//     "Project Title:",
-//     "Description:",
-//     "Installation:",
-//     "Usage:",
-//     "Credits:",
-//     "License:",
-//     "How to contribute:",
-//     "Tests:",
-// ]
+const questions = [
+    "What would you like to do?",                                   //0
+    "What is the name of the department?",                          //1
+    "What is the name of the role?",                                //2
+    "What is the employee's first name?",                           //3
+    "What is the employee's last name?",                            //4
+    "What is the employee's role?",                                 //5
+    "Who is the employee's manager?",                               //6
+    "Which employee's role do you want to update?",                 //7
+    "Which role do you want to assign to the selected employee?"    //8
+]
+
+const welcomeMenu = () => {
+    return inquirer.prompt([
+        {
+            type: "list",
+            name: "menu",
+            message: questions[0],
+            choices: [
+                "View all employees",
+                "View employees by department",
+                "View employees by manager",
+                "View all managers",
+                "Add employee", 
+                "Delete employee",
+                "View all employee titles", 
+                "Update employee title", 
+                "Add employee title",
+                "View all departments",
+                "Add department", 
+                "Quit"
+            ]
+        }
+    ])
+}
 
 // const promptUser = () => {
 //   return inquirer.prompt([
@@ -101,8 +125,8 @@ const writeFileAsync = util.promisify(fs.writeFile);
 // TODO: Create a function to initialize app
 // const init = () => {
 //   promptUser()
-//     .then((data) => writeFileAsync('genREADME.md', generateMarkdown(data)))
-//     .then(() => console.log('Successfully wrote to genREADME.md'))
+//     // .then((data) => writeFileAsync('genREADME.md', generateMarkdown(data)))
+//     // .then(() => console.log('Successfully wrote to genREADME.md'))
 //     .catch((err) => console.error(err));
 // };
 // Function call to initialize app

@@ -59,4 +59,4 @@ Try to add some additional functionality to your application, such as the abilit
 
 -------------------
 
-Left off fixing the employee seeds.sql, currently throws an error when inserting into table. App is connected, dotenv is working. After seeds and tables work correctly, work on creating prompts and functions for creating/displaying employee info. 
+work on creating prompts and functions for creating/displaying employee info. 
