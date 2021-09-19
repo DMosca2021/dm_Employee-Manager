@@ -51,87 +51,216 @@ const questions = [
     "Which role do you want to assign to the selected employee?"    //8
 ]
 
-const welcomeMenu = () => {
-    return inquirer.prompt([
-        {
-            type: "list",
-            name: "menu",
-            message: questions[0],
-            choices: [
-                "View all employees",
-                "View employees by department",
-                "View employees by manager",
-                "View all managers",
-                "Add employee", 
-                "Delete employee",
-                "View all employee titles", 
-                "Update employee title", 
-                "Add employee title",
-                "View all departments",
-                "Add department", 
-                "Quit"
-            ]
-        }
-    ])
-}
 // use switch case to go through the menu items and run associated functions. Ex: View all employees --> Chosen --> runs viewEmployees function.
 
+function initApp() {
 
-// const promptUser = () => {
-//   return inquirer.prompt([
-//     {
-//       type: 'INPUT',
-//       name: 'title',
-//       message: questions[0],
-//     },
-//     {
-//       type: 'INPUT',
-//       name: 'description',
-//       message: questions[1],
-//     },
-//     {
-//       type: 'INPUT',
-//       name: 'install',
-//       message: questions[2],
-//     },
-//     {
-//       type: 'INPUT',
-//       name: 'usage',
-//       message: questions[3],
-//     },
-//     {
-//       type: 'INPUT',
-//       name: 'credits',
-//       message: questions[4],
-//     },
-//     {
-//       type: 'LIST',
-//       name: 'license',
-//       message: questions[5],
-//       choices: ["Apache license 2.0", "Artistic license 2.0", "Boost Software License 1.0", "BSD 2-clause Simplified license", "BSD 3-clause New or Revised license", "Creative Commons Zero v1.0 Universal", "Creative Commons Attribution 4.0", "Creative Commons Attribution Share Alike 4.0", "Do What The F*ck You Want To Public License", "Eclipse Public License 1.0", "GNU Affero General Public License v3.0", "GNU General Public License v2.0", "GNU General Public License v3.0", "GNU Lesser General Public License v3.0", "ISC", "MIT", "Mozilla Public License 2.0", "SIL Open Font License 1.1", "The Unlicense", "zLib License"]
-//     },
-//     {
-//       type: 'INPUT',
-//       name: 'contribute',
-//       message: questions[6],
-//     },
-//     {
-//       type: 'INPUT',
-//       name: 'tests',
-//       message: questions[7],
-//     },
-//   ]);
-// };
+    function welcomeMenu() {
+        console.log("Welcome to your employee management system.");
+        console.log("What would you like to do?")
+        inquirer.prompt([
+            {
+                type: "list",
+                name: "menu",
+                message: questions[0],
+                choices: [
+                    "View all employees",
+                    "View employees by department",
+                    "View employees by manager",
+                    "View all managers",
+                    "Add employee", 
+                    "Delete employee",
+                    "View all employee titles", 
+                    "Update employee title", 
+                    "Add employee title",
+                    "View all departments",
+                    "Add department", 
+                    "Quit"
+                ]
+            },
+            {
+                type: "input",
+                name: "managerId",
+                message: "Enter manager's ID number:",
+                validate: answer => {
+                    if (answer !== "") {
+                        return true;
+                    }
+                    return "Please enter an ID number.";
+                }
+            },
+            {
+                type: "input",
+                name: "managerEmail",
+                message: "Enter manager's email address:",
+                validate: answer => {
+                    if (answer !== "") {
+                        return true;
+                    }
+                    return "Please enter an email address:";
+                }
+            },
+            {
+                type: "input",
+                name: "managerNum",
+                message: "Enter manager's office number:",
+                validate: answer => {
+                    if (answer !== "") {
+                        return true;
+                    }
+                    return "Please enter an office number.";
+                }
+            },
+        ]).then(data => {
+            const manager = new Manager(data.managerName, data.managerId, data.managerEmail, data.managerNum);
+            teamArray.push(manager);
+            createTeam();
+        });
+    }
 
-// TODO: Create a function to write README file
-// TODO: Create a function to initialize app
-// const init = () => {
-//   promptUser()
-//     // .then((data) => writeFileAsync('genREADME.md', generateMarkdown(data)))
-//     // .then(() => console.log('Successfully wrote to genREADME.md'))
-//     .catch((err) => console.error(err));
-// };
-// Function call to initialize app
-// init();
+    function createTeam() {
+        inquirer.prompt([
+            {
+                type: "list",
+                name: "memberChoice",
+                message: "Choose next team member to add.",
+                choices: [
+                    "Engineer",
+                    "Intern",
+                    "Cancel"
+                ]
+            }
+        ]).then(userChoice => {
+            switch (userChoice.memberChoice) {
+                case "Engineer":
+                    createEngineer();
+                    break;
+                case "Intern":
+                    createIntern();
+                    break;
+                default:
+                    generateHTML(teamArray);
+            }
+        });
+    }
 
+    function createEngineer() {
+        inquirer.prompt([
+            {
+                type: "input",
+                name: "engineerName",
+                message: "Enter engineer's name:",
+                validate: answer => {
+                    if (answer !== "") {
+                        return true;
+                    }
+                    return "Please enter a name.";
+                }
+            },
+            {
+                type: "input",
+                name: "engineerId",
+                message: "Enter engineer's ID number:",
+                validate: answer => {
+                    if (answer !== "") {
+                        return true;
+                    }
+                    return "Please enter an ID number.";
+                }
+            },
+            {
+                type: "input",
+                name: "engineerEmail",
+                message: "Enter engineer's email address:",
+                validate: answer => {
+                    if (answer !== "") {
+                        return true;
+                    }
+                    return "Please enter an email address.";
+                }
+            },
+            {
+                type: "input",
+                name: "engineerGithub",
+                message: "Enter engineer's GitHub username:",
+                validate: answer => {
+                    if (answer !== "") {
+                        return true;
+                    }
+                    return "Please enter the engineer's GitHub username.";
+                }
+            },
+        ]) .then(data => {
+            const engineer = new Engineer(data.engineerName, data.engineerId, data.engineerEmail, data.engineerGithub);
+            teamArray.push(engineer);
+            createTeam();
+        });
+    }
+    
+    function createIntern() {
+        inquirer.prompt([
+            {
+                type: "input",
+                name: "internName",
+                message: "Enter intern's name:",
+                validate: answer => {
+                    if (answer !== "") {
+                        return true;
+                    }
+                    return "Please enter a name.";
+                }  
+            },
+            {
+                type: "input",
+                name: "internId",
+                message: "Enter intern's ID number:",
+                validate: answer => {
+                    if (answer !== "") {
+                        return true;
+                    }
+                    return "Please enter an number.";
+                }
+            },
+            {
+                type: "input",
+                name: "internEmail",
+                message: "Enter intern's email address:",
+                validate: answer => {
+                    if (answer !== "") {
+                        return true;
+                    }
+                    return "Please enter an email address.";
+                }
+            },
+            {
+                type: "input",
+                name: "internSchool",
+                message: "Where does the intern attend school:",
+                validate: answer => {
+                    if (answer !== "") {
+                        return true;
+                    }
+                    return "Please enter a school.";
+                }
+            },
+        ]) .then(data => {
+            const intern = new Intern(data.internName, data.internId, data.internEmail, data.internSchool);
+            teamArray.push(intern);
+            createTeam();
+        });
+    }
+
+    function generateHTML() {
+        if (!fs.existsSync(DIST_DIR)) {
+            fs.mkdirSync(DIST_DIR);
+        }
+        console.log("Generating Team Profile.... ");
+        console.log(teamArray);
+        fs.writeFileSync(outputPath, render(teamArray), "utf-8");
+    }
+
+    createManager();
+}
+
+initApp();
 // |^^^Template for inquirer^^^| -- Taken from week9 homework.

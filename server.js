@@ -1,6 +1,6 @@
 require("dotenv").config()
-const express = require("express");
-// const inquirer = require('inquirer');
+const ct = require("console.table")
+const inquirer = require('inquirer');
 const mysql = require("mysql2");
 
 const PORT = process.env.PORT || 3001;
@@ -18,9 +18,7 @@ app.listen(PORT, () =>
 const db = mysql.createConnection(
   {
     host: 'localhost',
-    // MySQL username,
     user: 'root',
-    // TODO: Add MySQL password here
     password: process.env.sql_pw,
     database: 'workforce_db'
   },
