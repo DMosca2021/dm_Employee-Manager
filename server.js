@@ -1,26 +1,12 @@
 require("dotenv").config()
 const ct = require("console.table")
 const inquirer = require('inquirer');
-const mysql = require("mysql2");
+const connection = require("./config/connection")
 
 const PORT = process.env.PORT || 3001;
 
-// Middleware for parsing JSON and urlencoded form data
-// app.use(express.json());
-// app.use(express.urlencoded({ extended: true }));
-
 app.listen(PORT, () =>
   console.log(`App listening at http://localhost:${PORT} 🚀`)
-);
-
-const db = mysql.createConnection(
-  {
-    host: 'localhost',
-    user: 'root',
-    password: process.env.sql_pw,
-    database: 'workforce_db'
-  },
-  console.log(`Connected to the workforce_db database.`)
 );
 
 const questions = [
