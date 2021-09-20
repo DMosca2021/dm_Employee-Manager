@@ -1,17 +1,8 @@
-require("dotenv").config();
-const ct = require("console.table");
 const inquirer = require('inquirer');
-const connection = require("./config/connection");
 const lib = require("./lib/index")
 
-const PORT = process.env.PORT || 3001;
-
-// app.listen(PORT, () =>
-//   console.log(`App listening at http://localhost:${PORT} 🚀`)
-// );
-
 const questions = [
-  "What would you like to do?",                                   //0
+  ,                                   //0
   "What is the name of the department?",                          //1
   "What is the name of the role?",                                //2
   "What is the employee's first name?",                           //3
@@ -23,14 +14,13 @@ const questions = [
 ]
 
 function initApp() {
-
   function welcomeMenu() {
       console.log("Welcome to your employee management system.");
       inquirer.prompt([
           {
               type: "list",
               name: "menu",
-              message: questions[0],
+              message: "What would you like to do?",
               choices: [
                   "View all employees",
                   "View employees by department",
@@ -83,56 +73,11 @@ function initApp() {
                   break;
               case "Quit":
                   console.log("You have managed your employees. All changes have been saved.")
-                  connection.end();
+                  mysql.end();
           }
       });
   };
-
   welcomeMenu();
-
-  function viewEmployees() {
-      
-  }
-
-  function viewEmpByDept() {
-
-  }
-
-  function viewEmpByManager() {
-
-  }
-  
-  function viewManagers() {
-
-  }
-
-  function addEmployee() {
-
-  }
-
-  function delEmployee() {
-
-  }
-  
-  function viewEmpTitles() {
-
-  }
-
-  function updateEmpTitle() {
-
-  }
-
-  function addEmpTitle() {
-
-  }
-
-  function viewDepartments() {
-
-  }
-
-  function addDepartment() {
-
-  }
 }
 
 initApp();
