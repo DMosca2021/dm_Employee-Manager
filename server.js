@@ -1,13 +1,14 @@
-require("dotenv").config()
-const ct = require("console.table")
+require("dotenv").config();
+const ct = require("console.table");
 const inquirer = require('inquirer');
-const connection = require("./config/connection")
+const connection = require("./config/connection");
+const lib = require("./lib/index")
 
 const PORT = process.env.PORT || 3001;
 
-app.listen(PORT, () =>
-  console.log(`App listening at http://localhost:${PORT} 🚀`)
-);
+// app.listen(PORT, () =>
+//   console.log(`App listening at http://localhost:${PORT} 🚀`)
+// );
 
 const questions = [
   "What would you like to do?",                                   //0
@@ -84,9 +85,9 @@ function initApp() {
                   console.log("You have managed your employees. All changes have been saved.")
                   connection.end();
           }
-          // use switch case to go through the menu items and run associated functions. Ex: View all employees --> Chosen --> runs viewEmployees function.
       });
-  }
+  };
+
   welcomeMenu();
 
   function viewEmployees() {

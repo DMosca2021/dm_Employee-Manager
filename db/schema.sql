@@ -14,7 +14,7 @@ CREATE TABLE employee (
 );
 
 CREATE TABLE employee_title (
-  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  id INT NOT NULL PRIMARY KEY,
   title_name VARCHAR(30) NULL,
   salary DECIMAL NULL,
   department_id INT NULL
