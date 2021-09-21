@@ -1,8 +1,11 @@
 const inquirer = require('inquirer');
-const lib = require("./lib/index")
+const dbNav = require("./lib/index");
+const ct = require("console.table");
+const connection = require("./config/connection")
+
 
 const questions = [
-  ,                                   //0
+  "What would you like to do?",                                   //0
   "What is the name of the department?",                          //1
   "What is the name of the role?",                                //2
   "What is the employee's first name?",                           //3
@@ -20,7 +23,7 @@ function initApp() {
           {
               type: "list",
               name: "menu",
-              message: "What would you like to do?",
+              message: questions[0],
               choices: [
                   "View all employees",
                   "View employees by department",
@@ -36,8 +39,8 @@ function initApp() {
                   "Quit"
               ]
           }
-      ]).then(data => {
-          switch (data.choices) {
+      ]).then((userChoice) => {
+          switch (userChoice.choices) {
               case "View all employees":
                   viewEmployees();
                   break;
@@ -74,10 +77,18 @@ function initApp() {
               case "Quit":
                   console.log("You have managed your employees. All changes have been saved.")
                   mysql.end();
+                  break;
           }
       });
   };
   welcomeMenu();
+
+
+  // Need to add functions to call the queries from the index.js
+
+  // function viewEmployees() {
+
+  // }
 }
 
 initApp();
