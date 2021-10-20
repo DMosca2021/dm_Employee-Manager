@@ -1,9 +1,11 @@
 const inquirer = require("inquirer");
 const ct = require("console.table");
+const connection = require("./config/connection");
 // const dbNav = require("./lib/index");
-// const connection = require("./config/connection");
+
 
 function initApp() {
+  console.log("Welcome to the Employee Manager");
   function welcomeMenu() {
     console.log("Welcome to your employee management system.");
     inquirer
@@ -69,12 +71,6 @@ function initApp() {
       });
   }
   welcomeMenu();
-
-  // Need to add functions to call the queries from the index.js
-
-  // function viewEmployees() {
-
-  // }
 }
 
 initApp();
