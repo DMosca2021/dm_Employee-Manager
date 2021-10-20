@@ -1,7 +1,7 @@
 const inquirer = require("inquirer");
-// const dbNav = require("./lib/index");
 const ct = require("console.table");
-const connection = require("./config/connection");
+// const dbNav = require("./lib/index");
+// const connection = require("./config/connection");
 
 function initApp() {
   function welcomeMenu() {
