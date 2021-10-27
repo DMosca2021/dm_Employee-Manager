@@ -39,12 +39,10 @@ function initApp() {
           await query.viewEmpByManager();
           initApp();
           break;
-        // case "View all managers":
-        //   await viewManagers();
-        //   break;
-        // case "Add employee":
-        //   await addEmployee();
-        //   break;
+        case "Add employee":
+          await query.addEmployee();
+          initApp();
+          break;
         // case "Delete employee":
         //   await delEmployee();
         //   break;

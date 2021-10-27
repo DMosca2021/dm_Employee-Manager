@@ -48,6 +48,43 @@ const viewDepartments = async () => {
     })
 };
 
+const addEmployee = async () => {
+  await inquirer.prompt(
+    [
+      {
+        type: 'input',
+        message: "Add employee's first name",
+        name: 'first_name'
+      },
+      {
+        type: 'input',
+        message: "Add employee's last name",
+        name: 'last_name'
+      },
+      {
+        type: 'input',
+        message: "Add employee's title ID",
+        name: 'title_id'
+      },
+      {
+        type: 'input',
+        message: "Add employee's manager",
+        name: 'manager_id'
+      },
+    ]
+  ).then((data) => {
+    db.promise().query(`
+    INSERT INTO employee (first_name, last_name, title_id, manager_id)
+    VALUES ('${data.first_name}', '${data.last_name}', '${data.title_id}', '${data.manager_id}')
+    `)
+    .then( ([result]) => {
+      console.table('Employee', result);
+    })
+
+  })
+}
+
+
 const quitApp = () => db.end();
 
 module.exports = {
@@ -55,5 +92,6 @@ module.exports = {
   viewEmpByDept,
   viewEmpByManager,
   viewDepartments,
+  addEmployee,
   quitApp
 }
