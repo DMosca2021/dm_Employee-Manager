@@ -5,7 +5,7 @@ const ct = require("console.table");
 
 const viewEmployees = async () => {
   await db.promise().query(`
-    SELECT employee.first_name AS 'First Name', employee.last_name AS 'Last Name' 
+    SELECT employee.first_name AS 'First Name', employee.last_name AS 'Last Name', employee.id AS ID 
     FROM employee
     LEFT JOIN title ON title.id = employee.title_id
     LEFT JOIN department ON department.id = title.department_id
@@ -84,6 +84,26 @@ const addEmployee = async () => {
   })
 }
 
+const delEmployee = async () => {
+  await inquirer.prompt(
+    [
+      {
+        type: 'input',
+        message: "Input employee ID to remove from system",
+        name: 'id'
+      },
+    ]
+  ).then((data) => {
+    db.promise().query(`
+    DELETE FROM employee
+    WHERE employee.id='${data.id}'
+    `)
+    .then( ([result]) => {
+      console.table('Employee', result);
+    })
+
+  })
+}
 
 const quitApp = () => db.end();
 
@@ -93,5 +113,6 @@ module.exports = {
   viewEmpByManager,
   viewDepartments,
   addEmployee,
+  delEmployee,
   quitApp
 }

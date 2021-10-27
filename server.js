@@ -43,9 +43,10 @@ function initApp() {
           await query.addEmployee();
           initApp();
           break;
-        // case "Delete employee":
-        //   await delEmployee();
-        //   break;
+        case "Delete employee":
+          await query.delEmployee();
+          initApp();
+          break;
         // case "View all employee titles":
         //   await viewEmpTitles();
         //   break;
