@@ -35,9 +35,10 @@ function initApp() {
           await query.viewEmpByDept();
           initApp();
           break;
-        // case "View employees by manager":
-        //   await viewEmpByManager();
-        //   break;
+        case "View employees by manager":
+          await query.viewEmpByManager();
+          initApp();
+          break;
         // case "View all managers":
         //   await viewManagers();
         //   break;
