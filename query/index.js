@@ -105,6 +105,14 @@ const delEmployee = async () => {
   })
 }
 
+const viewEmpTitles = async () => {
+  await db.promise().query(`SELECT * FROM title`)
+    .then( ([result]) => {
+      console.table('Employee Titles', result);
+    })
+};
+
+
 const quitApp = () => db.end();
 
 module.exports = {
@@ -112,6 +120,7 @@ module.exports = {
   viewEmpByDept,
   viewEmpByManager,
   viewDepartments,
+  viewEmpTitles,
   addEmployee,
   delEmployee,
   quitApp

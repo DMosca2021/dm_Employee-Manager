@@ -47,9 +47,10 @@ function initApp() {
           await query.delEmployee();
           initApp();
           break;
-        // case "View all employee titles":
-        //   await viewEmpTitles();
-        //   break;
+        case "View all employee titles":
+          await query.viewEmpTitles();
+          initApp();
+          break;
         // case "Update employee title":
         //   await updateEmpTitle();
         //   break;
