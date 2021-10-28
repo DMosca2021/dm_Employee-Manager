@@ -39,16 +39,24 @@ function initApp() {
           await query.viewEmpByManager();
           initApp();
           break;
-        case "Add employee":
-          await query.addEmployee();
-          initApp();
-          break;
-        case "Delete employee":
-          await query.delEmployee();
+        case "View all departments":
+          await query.viewDepartments();
           initApp();
           break;
         case "View all employee titles":
           await query.viewEmpTitles();
+          initApp();
+          break;
+        case "Add employee":
+          await query.addEmployee();
+          initApp();
+          break;
+        case "Add employee title":
+          await query.addEmpTitle();
+          initApp();
+          break;
+        case "Add department":
+          await query.addDepartment();
           initApp();
           break;
         case "Update employee title":
@@ -59,16 +67,16 @@ function initApp() {
           await query.updateManager();
           initApp();
           break;
-        case "Add employee title":
-          await query.addEmpTitle();
+        case "Delete employee":
+          await query.delEmployee();
           initApp();
           break;
-        case "View all departments":
-          await query.viewDepartments();
+        case "Delete employee":
+          await query.delEmployee();
           initApp();
           break;
-        case "Add department":
-          await query.addDepartment();
+        case "Delete department":
+          await query.delDepartment();
           initApp();
           break;
         case "Quit":

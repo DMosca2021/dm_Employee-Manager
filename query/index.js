@@ -136,6 +136,26 @@ const updateEmpTitle = async () => {
   })
 }
 
+const delEmpTitle = async () => {
+  await inquirer.prompt(
+    [
+      {
+        type: 'input',
+        message: "Input employee title to remove from system",
+        name: 'id'
+      },
+    ]
+  ).then((data) => {
+    db.promise().query(`
+    DELETE FROM title
+    WHERE title.id='${data.id}'
+    `)
+      .then(([result]) => {
+        console.table('Employee', result);
+      })
+  })
+}
+
 const updateManager = async () => {
   await inquirer.prompt(
     [
@@ -212,6 +232,26 @@ const addDepartment = async () => {
   })
 }
 
+const delDepartment = async () => {
+  await inquirer.prompt(
+    [
+      {
+        type: 'input',
+        message: "Input department ID to remove from system",
+        name: 'id'
+      },
+    ]
+  ).then((data) => {
+    db.promise().query(`
+    DELETE FROM department
+    WHERE department.id='${data.id}'
+    `)
+      .then(([result]) => {
+        console.table('Departments', result);
+      })
+  })
+}
+
 const quitApp = () => db.end();
 
 module.exports = {
@@ -226,5 +266,7 @@ module.exports = {
   updateEmpTitle,
   updateManager,
   delEmployee,
+  delEmpTitle,
+  delDepartment,
   quitApp
 }
