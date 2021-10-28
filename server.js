@@ -3,6 +3,11 @@ const ct = require("console.table");
 const connection = require("./config/connection");
 const query = require("./query");
 
+const logo = require('asciiart-logo');
+const config = require('./package.json');
+console.log(logo(config).render());
+
+
 function initApp() {
   console.log("Welcome to your employee management system.");
   inquirer

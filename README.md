@@ -3,7 +3,7 @@ Week 12 homework
 
 ## Description 
 
-This homeworks goal is to make a command line application for a business owner to manage his workforce using Node.js, Inquirer, and MySQL. 
+This homeworks goal is to create a command line application for a business owner to manage their workforce using Node.js, Inquirer, and MySQL. 
 
 ## User Story
 
@@ -39,24 +39,14 @@ THEN I am prompted to select an employee to update and their new role and this i
 
 [Repo Link](https://github.com/DMosca2021/dm_Employee-Manager)
 
-[Link to Demo Video]()
+[Link to Demo Video](./images/empmanager_scrnsht.png)
 
 ## Screenshots
 
+![Screenshot](./images/empmanager_scrnsht.png)
+
 ## Credits
 
-[Docs on console.table](https://www.npmjs.com/package/console.table)
-
-## Notes
-BONUS:
-Try to add some additional functionality to your application, such as the ability to do the following:
-- Update employee managers.
-- View employees by manager.
-- View employees by department.
-- Delete departments, roles, and employees.
-- View the total utilized budget of a department—in other words, the combined salaries of all employees in that department.
-
-
--------------------
-
-work on creating prompts and functions for creating/displaying employee info. 
+- [W3schools SQL joins](https://www.w3schools.com/sql/sql_join_left.asp)
+- [Docs on console.table](https://www.npmjs.com/package/console.table)
+- [Google](https://www.google.com/)
