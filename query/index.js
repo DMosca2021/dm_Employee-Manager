@@ -10,7 +10,7 @@ const viewEmployees = async () => {
     LEFT JOIN title ON title.id = employee.title_id
     LEFT JOIN department ON department.id = title.department_id
     `)
-    .then( ([result]) => {
+    .then(([result]) => {
       console.table('Employees', result);
     })
 }
@@ -23,7 +23,7 @@ const viewEmpByDept = async () => {
     LEFT JOIN department ON title.department_id = department.id
     ORDER BY department ASC
     `)
-    .then( ([result]) => {
+    .then(([result]) => {
       console.table('Employees by Department', result);
     })
 }
@@ -36,14 +36,14 @@ const viewEmpByManager = async () => {
     LEFT JOIN department ON department.id = title.department_id
     ORDER BY manager_id ASC
     `)
-    .then( ([result]) => {
+    .then(([result]) => {
       console.table('Employees by manager', result);
     })
 }
 
 const viewDepartments = async () => {
   await db.promise().query(`SELECT * FROM department`)
-    .then( ([result]) => {
+    .then(([result]) => {
       console.table('Departments', result);
     })
 };
@@ -77,9 +77,9 @@ const addEmployee = async () => {
     INSERT INTO employee (first_name, last_name, title_id, manager_id)
     VALUES ('${data.first_name}', '${data.last_name}', '${data.title_id}', '${data.manager_id}')
     `)
-    .then( ([result]) => {
-      console.table('Employee', result);
-    })
+      .then(([result]) => {
+        console.table('Employee', result);
+      })
 
   })
 }
@@ -98,20 +98,51 @@ const delEmployee = async () => {
     DELETE FROM employee
     WHERE employee.id='${data.id}'
     `)
-    .then( ([result]) => {
-      console.table('Employee', result);
-    })
+      .then(([result]) => {
+        console.table('Employee', result);
+      })
 
   })
 }
 
 const viewEmpTitles = async () => {
   await db.promise().query(`SELECT * FROM title`)
-    .then( ([result]) => {
+    .then(([result]) => {
       console.table('Employee Titles', result);
     })
 };
 
+const updateEmpTitle = async () => {
+  await inquirer.prompt(
+    [
+      {
+        type: 'input',
+        message: "Input employee ID to Update",
+        name: 'id'
+      },
+      {
+        type: 'input',
+        message: "Input new employee title ID",
+        name: 'new_title'
+      },
+      {
+        type: 'input',
+        message: "Input new employee manager ID",
+        name: 'new_manager'
+      },
+    ]
+  ).then((data) => {
+    db.promise().query(`
+    UPDATE employee
+    SET title_id='${data.new_title}', manager_id='${data.new_manager}'
+    WHERE employee.id='${data.id}'
+    `)
+      .then(([result]) => {
+        console.table('Employee', result);
+      })
+
+  })
+}
 
 const quitApp = () => db.end();
 
@@ -121,6 +152,7 @@ module.exports = {
   viewEmpByManager,
   viewDepartments,
   viewEmpTitles,
+  updateEmpTitle,
   addEmployee,
   delEmployee,
   quitApp
