@@ -20,9 +20,8 @@ function initApp() {
         "Add employee title",
         "Add department",
         "Update employee title",
-        
+        "Update employee manager",
         "Delete employee",
-
         "Quit",
       ],
     })
@@ -56,6 +55,10 @@ function initApp() {
           await query.updateEmpTitle();
           initApp();
           break;
+        case "Update employee manager":
+          await query.updateManager();
+          initApp();
+          break;
         case "Add employee title":
           await query.addEmpTitle();
           initApp();
@@ -76,7 +79,7 @@ function initApp() {
       }
     });
 
-  
+
 }
 
 initApp();

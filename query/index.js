@@ -122,6 +122,27 @@ const updateEmpTitle = async () => {
         type: 'input',
         message: "Input new employee title ID",
         name: 'new_title'
+      }
+    ]
+  ).then((data) => {
+    db.promise().query(`
+    UPDATE employee
+    SET title_id='${data.new_title}'
+    WHERE employee.id='${data.id}'
+    `)
+      .then(([result]) => {
+        console.table('Employee Titles', result);
+      })
+  })
+}
+
+const updateManager = async () => {
+  await inquirer.prompt(
+    [
+      {
+        type: 'input',
+        message: "Input employee ID to Update",
+        name: 'id'
       },
       {
         type: 'input',
@@ -132,7 +153,7 @@ const updateEmpTitle = async () => {
   ).then((data) => {
     db.promise().query(`
     UPDATE employee
-    SET title_id='${data.new_title}', manager_id='${data.new_manager}'
+    SET manager_id='${data.new_manager}'
     WHERE employee.id='${data.id}'
     `)
       .then(([result]) => {
@@ -203,6 +224,7 @@ module.exports = {
   addEmployee,
   addDepartment,
   updateEmpTitle,
+  updateManager,
   delEmployee,
   quitApp
 }
