@@ -39,7 +39,7 @@ THEN I am prompted to select an employee to update and their new role and this i
 
 [Repo Link](https://github.com/DMosca2021/dm_Employee-Manager)
 
-[Link to Demo Video](./images/empmanager_scrnsht.png)
+[Link to Demo Video]()
 
 ## Screenshots
 
@@ -48,5 +48,5 @@ THEN I am prompted to select an employee to update and their new role and this i
 ## Credits
 
 - [W3schools SQL joins](https://www.w3schools.com/sql/sql_join_left.asp)
-- [Docs on console.table](https://www.npmjs.com/package/console.table)
+- [Docs on console.table](https://drive.google.com/file/d/1NsxO6yg06DyfL1_r6ak7ZVYkb6q54eKb/view)
 - [Google](https://www.google.com/)
