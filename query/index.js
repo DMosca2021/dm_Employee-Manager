@@ -136,7 +136,7 @@ const updateEmpTitle = async () => {
     WHERE employee.id='${data.id}'
     `)
       .then(([result]) => {
-        console.table('Employee', result);
+        console.table('Employee Titles', result);
       })
   })
 }
@@ -171,6 +171,26 @@ const addEmpTitle = async () => {
   })
 }
 
+const addDepartment = async () => {
+  await inquirer.prompt(
+    [
+      {
+        type: 'input',
+        message: "Add department name",
+        name: 'dept_name'
+      },
+    ]
+  ).then((data) => {
+    db.promise().query(`
+    INSERT INTO department (dept_name)
+    VALUES ('${data.dept_name}')
+    `)
+      .then(([result]) => {
+        console.table('Departments', result);
+      })
+  })
+}
+
 const quitApp = () => db.end();
 
 module.exports = {
@@ -179,9 +199,10 @@ module.exports = {
   viewEmpByManager,
   viewDepartments,
   viewEmpTitles,
-  updateEmpTitle,
   addEmpTitle,
   addEmployee,
+  addDepartment,
+  updateEmpTitle,
   delEmployee,
   quitApp
 }

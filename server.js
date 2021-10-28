@@ -12,16 +12,17 @@ function initApp() {
       message: "What would you like to do?",
       choices: [
         "View all employees",
+        "View all employee titles",
+        "View all departments",
         "View employees by department",
         "View employees by manager",
-        "View all managers",
         "Add employee",
-        "Delete employee",
-        "View all employee titles",
-        "Update employee title",
         "Add employee title",
-        "View all departments",
         "Add department",
+        "Update employee title",
+        
+        "Delete employee",
+
         "Quit",
       ],
     })
@@ -63,9 +64,10 @@ function initApp() {
           await query.viewDepartments();
           initApp();
           break;
-        // case "Add department":
-        //   await addDepartment();
-        //   break;
+        case "Add department":
+          await query.addDepartment();
+          initApp();
+          break;
         case "Quit":
           console.log(
             "You have managed your employees. All changes have been saved."
