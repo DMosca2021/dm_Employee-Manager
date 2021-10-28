@@ -5,10 +5,10 @@ const ct = require("console.table");
 
 const viewEmployees = async () => {
   await db.promise().query(`
-    SELECT employee.first_name AS 'First Name', employee.last_name AS 'Last Name', employee.id AS ID 
+    SELECT employee.id AS ID, employee.first_name AS 'First Name', employee.last_name AS 'Last Name', employee.title_id AS 'Title ID', employee.manager_id AS 'Manager ID'
     FROM employee
-    LEFT JOIN title ON title.id = employee.title_id
-    LEFT JOIN department ON department.id = title.department_id
+    LEFT JOIN title ON employee.title_id = title.title
+    LEFT JOIN department ON title.department_id = department.dept_name
     `)
     .then(([result]) => {
       console.table('Employees', result);
@@ -80,7 +80,6 @@ const addEmployee = async () => {
       .then(([result]) => {
         console.table('Employee', result);
       })
-
   })
 }
 
@@ -101,7 +100,6 @@ const delEmployee = async () => {
       .then(([result]) => {
         console.table('Employee', result);
       })
-
   })
 }
 
@@ -140,7 +138,36 @@ const updateEmpTitle = async () => {
       .then(([result]) => {
         console.table('Employee', result);
       })
+  })
+}
 
+const addEmpTitle = async () => {
+  await inquirer.prompt(
+    [
+      {
+        type: 'input',
+        message: "Add title name",
+        name: 'title'
+      },
+      {
+        type: 'input',
+        message: "Add salary for title",
+        name: 'salary'
+      },
+      {
+        type: 'input',
+        message: "Add title's department ID",
+        name: 'department_id'
+      }
+    ]
+  ).then((data) => {
+    db.promise().query(`
+    INSERT INTO title (title, salary, department_id)
+    VALUES ('${data.title}', '${data.salary}', '${data.department_id}')
+    `)
+      .then(([result]) => {
+        console.table('Employee Titles', result);
+      })
   })
 }
 
@@ -153,6 +180,7 @@ module.exports = {
   viewDepartments,
   viewEmpTitles,
   updateEmpTitle,
+  addEmpTitle,
   addEmployee,
   delEmployee,
   quitApp

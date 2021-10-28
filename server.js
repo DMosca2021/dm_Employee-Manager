@@ -55,9 +55,10 @@ function initApp() {
           await query.updateEmpTitle();
           initApp();
           break;
-        // case "Add employee title":
-        //   await addEmpTitle();
-        //   break;
+        case "Add employee title":
+          await query.addEmpTitle();
+          initApp();
+          break;
         case "View all departments":
           await query.viewDepartments();
           initApp();
