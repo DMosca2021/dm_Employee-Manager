@@ -2,7 +2,7 @@ const db = require("../config/connection");
 const inquirer = require("inquirer");
 const ct = require("console.table");
 
-
+// View all employees
 const viewEmployees = async () => {
   await db.promise().query(`
     SELECT employee.id AS ID, employee.first_name AS 'First Name', employee.last_name AS 'Last Name', employee.title_id AS 'Title ID', employee.manager_id AS 'Manager ID'
@@ -15,6 +15,7 @@ const viewEmployees = async () => {
     })
 }
 
+// View employees sorted by department id in ascending order
 const viewEmpByDept = async () => {
   await db.promise().query(`
     SELECT employee.first_name AS 'First Name', employee.last_name AS 'Last Name', department.dept_name AS department
@@ -28,6 +29,7 @@ const viewEmpByDept = async () => {
     })
 }
 
+// View employees sorted by manager id in ascending order
 const viewEmpByManager = async () => {
   await db.promise().query(`
     SELECT employee.first_name AS 'First Name', employee.last_name AS 'Last Name', employee.manager_id AS Manager, employee.title_id  AS Title
@@ -41,6 +43,7 @@ const viewEmpByManager = async () => {
     })
 }
 
+// View all departments 
 const viewDepartments = async () => {
   await db.promise().query(`SELECT * FROM department`)
     .then(([result]) => {
@@ -48,6 +51,7 @@ const viewDepartments = async () => {
     })
 };
 
+// Add a new employee 
 const addEmployee = async () => {
   await inquirer.prompt(
     [
@@ -83,6 +87,7 @@ const addEmployee = async () => {
   })
 }
 
+// Delete an employee
 const delEmployee = async () => {
   await inquirer.prompt(
     [
@@ -103,6 +108,7 @@ const delEmployee = async () => {
   })
 }
 
+// View all employee titles 
 const viewEmpTitles = async () => {
   await db.promise().query(`SELECT * FROM title`)
     .then(([result]) => {
@@ -110,6 +116,7 @@ const viewEmpTitles = async () => {
     })
 };
 
+// Update an existing employee's title
 const updateEmpTitle = async () => {
   await inquirer.prompt(
     [
@@ -136,6 +143,7 @@ const updateEmpTitle = async () => {
   })
 }
 
+// Delete an employee title
 const delEmpTitle = async () => {
   await inquirer.prompt(
     [
@@ -156,6 +164,7 @@ const delEmpTitle = async () => {
   })
 }
 
+// Update an existing employee's manager
 const updateManager = async () => {
   await inquirer.prompt(
     [
@@ -182,6 +191,7 @@ const updateManager = async () => {
   })
 }
 
+// Create a new employee title
 const addEmpTitle = async () => {
   await inquirer.prompt(
     [
@@ -212,6 +222,7 @@ const addEmpTitle = async () => {
   })
 }
 
+// Add a new department 
 const addDepartment = async () => {
   await inquirer.prompt(
     [
@@ -232,6 +243,7 @@ const addDepartment = async () => {
   })
 }
 
+// Delete a department
 const delDepartment = async () => {
   await inquirer.prompt(
     [
@@ -252,6 +264,7 @@ const delDepartment = async () => {
   })
 }
 
+// Ends the application 
 const quitApp = () => db.end();
 
 module.exports = {
